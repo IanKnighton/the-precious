@@ -28,7 +28,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./.tf/
+        working-directory: ./.tf/Azure
     steps:
       - name: Checkout
         uses: actions/checkout@v3
