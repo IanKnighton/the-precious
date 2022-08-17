@@ -20,8 +20,6 @@ env:
 
 jobs:
   terraform:
-    permissions:
-      repository-projects: 'write'
     name: Terraform
     runs-on: ubuntu-latest
     defaults:
