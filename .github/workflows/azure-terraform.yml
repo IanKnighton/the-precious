@@ -21,8 +21,7 @@ env:
 jobs:
   terraform:
     permissions:
-        contents: 'read'
-        id-token: 'write'
+      repository-projects: 'write'
     name: Terraform
     runs-on: ubuntu-latest
     defaults:
