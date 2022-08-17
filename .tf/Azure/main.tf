@@ -22,7 +22,6 @@ provider "azurerm" {
 }
 
 provider "random" {
-  # Configuration options
 }
 
 resource "random_string" "random_four" {
