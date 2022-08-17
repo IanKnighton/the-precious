@@ -5,12 +5,12 @@ on:
     branches:
       - main
     paths:
-      - .tf/GitHub
+      - .tf/GitHub/**/*
   pull_request:
     branches:
       - main
     paths:
-      - .tf/GitHub
+      - .tf/GitHub/**/*
 
 env:
   ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
@@ -21,15 +21,12 @@ env:
 
 jobs:
   terraform:
-    permissions:
-        contents: 'read'
-        id-token: 'write'
     name: Terraform
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
-        working-directory: ./.tf/
+        working-directory: ./.tf/GitHub
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -48,8 +45,8 @@ jobs:
         run: terraform validate -no-color
       
       - name: Terraform Plan
-        run: terraform plan -input=false
+        run: terraform plan -input=false -var="github_token=${{ secrets.SCOPED_PAT }}"
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false 
+        run: terraform apply -auto-approve -input=false -var="github_token=${{ secrets.SCOPED_PAT }}"

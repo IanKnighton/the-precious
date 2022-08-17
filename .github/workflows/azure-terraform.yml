@@ -1,16 +1,16 @@
-name: GitHub Infrastructure
+name: Azure Infrastructure
 
 on:
   push:
     branches:
       - main
     paths:
-      - .tf/Azure
+      - .tf/Azure/**/*
   pull_request:
     branches:
       - main
     paths:
-      - .tf/Azure
+      - .tf/Azure/**/*
 
 env:
   ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
@@ -20,15 +20,12 @@ env:
 
 jobs:
   terraform:
-    permissions:
-        contents: 'read'
-        id-token: 'write'
     name: Terraform
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
-        working-directory: ./.tf/
+        working-directory: ./.tf/Azure
     steps:
       - name: Checkout
         uses: actions/checkout@v3
