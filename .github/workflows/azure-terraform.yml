@@ -1,4 +1,4 @@
-name: GitHub Infrastructure
+name: Azure Infrastructure
 
 on:
   push:
