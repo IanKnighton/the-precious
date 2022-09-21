@@ -10,7 +10,7 @@ resource "github_repository" "repo_mile_age" {
   vulnerability_alerts   = true
   license_template       = "gpl-3.0"
   topics = [
-    "MSSQL",
+    "mssql",
     "dotnet",
   ]
 }
