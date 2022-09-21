@@ -1,4 +1,4 @@
-resource "github_repository" "repo_shootout" {
+resource "github_repository" "repo_mile_age" {
   name                   = "mile-age"
   description            = "An app I built to track mileage on my car."
   visibility             = "private"
